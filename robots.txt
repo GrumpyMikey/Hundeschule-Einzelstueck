@@ -1,0 +1,8 @@
+# robots.txt
+User-agent: *
+Allow: /
+Disallow: /assets/private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+Sitemap: https://www.hundeschule-einzelstück.de/sitemap.xml

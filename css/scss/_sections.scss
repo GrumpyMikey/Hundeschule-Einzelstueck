@@ -1,0 +1,457 @@
+// _sections.scss
+@use 'variables' as *;
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: $spacing-md;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: $spacing-sm;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-lg;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Stats Section */
+.stats {
+  padding: $spacing-xl 0;
+  background-color: $color-light;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+
+  &__item {
+    text-align: center;
+    padding: $spacing-md;
+  }
+
+  &__number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    color: $color-secondary;
+  }
+}
+
+/* FAQ Section */
+.faq {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+
+  &__item {
+    background-color: white;
+    padding: $spacing-md;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    h3 {
+      color: $color-primary;
+      margin-bottom: $spacing-sm;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* Section Title */
+.section__title {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: $color-primary;
+    margin: $spacing-sm auto 0;
+  }
+}
+
+/* About Section */
+.about {
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__image {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%; // 1:1 Aspect ratio
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-normal;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__text {
+    p {
+      margin-bottom: $spacing-md;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+/* Dogs Section */
+.dogs {
+
+  background-color: white; // Hier hinzufügen
+  color: $color-text; // Hier hinzufügen
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+}
+.dog-card {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-10px);
+
+    .dog-card__image img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 75%; // 4:3 Aspect ratio
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-normal;
+    }
+  }
+
+  &__content {
+    padding: $spacing-md;
+  }
+
+  &__name {
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    font-size: 1.8rem;
+  }
+
+  &__description {
+    color: $color-text;
+    line-height: 1.6;
+  }
+}
+
+/* Prices Section */
+.prices {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+  }
+}
+
+.price-card {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  &__header {
+    background-color: $color-primary;
+    color: white;
+    padding: $spacing-md;
+    text-align: center;
+
+    h3 {
+      margin-bottom: $spacing-xs;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  &__content {
+    padding: $spacing-md;
+    text-align: center;
+  }
+
+  &__duration {
+    font-size: 1.1rem;
+    color: $color-secondary;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $color-primary;
+  }
+}
+
+/* Contact Section */
+.contact {
+
+  background-color: white; // Hier hinzufügen
+  color: $color-text; // Hier hinzufügen
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: $spacing-xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__info {
+    padding: $spacing-md;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-md;
+
+      i {
+        font-size: 1.5rem;
+        color: $color-primary;
+        margin-right: $spacing-sm;
+        width: 30px;
+      }
+
+      a {
+        color: $color-text;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__social {
+    margin-top: $spacing-lg;
+
+    &-link {
+      font-size: 2rem;
+      color: $color-primary;
+      margin-right: $spacing-md;
+
+      &:hover {
+        color: darken($color-primary, 10%);
+      }
+    }
+  }
+
+  &__form {
+    background-color: white;
+    padding: $spacing-lg;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.form {
+  &__group {
+    margin-bottom: $spacing-md;
+
+    label {
+      display: block;
+      margin-bottom: $spacing-xs;
+      color: $color-text;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: 1px solid lighten($color-secondary, 30%);
+      border-radius: 5px;
+      font-family: inherit;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+/* Checkbox Style */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  input:checked ~ .checkmark {
+    background-color: $color-primary;
+
+    &:after {
+      display: block;
+    }
+  }
+}
+

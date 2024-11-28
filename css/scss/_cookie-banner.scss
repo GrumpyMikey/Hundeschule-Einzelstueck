@@ -1,0 +1,86 @@
+// _cookie-banner.scss
+@use 'variables' as *;
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(white, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  padding: $spacing-md;
+  z-index: map-get($z-index, 'cookie-banner');
+  transform: translateY(100%);
+  transition: transform $transition-normal;
+
+  &.visible {
+    transform: translateY(0);
+  }
+
+  &__content {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__text {
+    font-size: 0.9rem;
+
+    a {
+      color: $color-primary;
+      text-decoration: underline;
+
+      &:hover {
+        color: darken($color-primary, 10%);
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-sm;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__button {
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all $transition-fast;
+    font-weight: 500;
+
+    &--accept {
+      background-color: $color-primary;
+      color: white;
+
+      &:hover {
+        background-color: darken($color-primary, 10%);
+      }
+    }
+
+    &--decline {
+      background-color: transparent;
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
+
+      &:hover {
+        background-color: $color-secondary;
+        color: white;
+      }
+    }
+  }
+}

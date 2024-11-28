@@ -1,0 +1,62 @@
+// _accessibility.scss
+@use 'variables' as *;
+
+// Skip to main content link
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-primary;
+  color: white;
+  padding: $spacing-sm $spacing-md;
+  z-index: map-get($z-index, 'skip-link');
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Verbesserte Focus-Styles
+:focus-visible {
+  outline: 3px solid $color-primary;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// Versteckte Elemente für Screen Reader
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// Verbesserte Kontraste für Text
+.high-contrast {
+  color: darken($color-text, 10%);
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+}
+
+// ARIA-Unterstützung
+[aria-hidden="true"] {
+  display: none;
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

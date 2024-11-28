@@ -1,0 +1,52 @@
+// Farben aus dem Logo
+$color-primary: #D4145A;    // Das Pink/Magenta der Pfote
+$color-secondary: #808080;   // Das Grau
+$color-text: #333333;       // Dunkelgrau für Text
+$color-background: #FFFFFF; // Weiß als Hintergrund
+$color-light: #F5F5F5;     // Helles Grau für Sektionen
+
+// Abstände
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 8rem;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Typography
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: 'Montserrat', sans-serif;
+
+// Transitions
+$transition-fast: 0.3s ease;
+$transition-normal: 0.5s ease;
+$transition-slow: 0.8s ease;
+
+// Z-Index Layers
+$z-index: (
+  'preloader': 1000,
+  'cookie-banner': 900,
+  'navigation': 800,
+  'modal': 700,
+  'overlay': 600,
+  'scroll-top': 500
+);
+
+// Container
+$container-max-width: 1200px;
+$container-padding: $spacing-sm;
+
+// Dark Mode Colors
+$dark-mode: (
+  'background': #121212,
+  'surface': #1e1e1e,
+  'primary': lighten($color-primary, 10%),
+  'text': #ffffff,
+  'text-secondary': rgba(255, 255, 255, 0.7),
+  'border': rgba(255, 255, 255, 0.1)
+);

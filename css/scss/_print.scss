@@ -1,0 +1,43 @@
+// _print.scss
+@media print {
+  // Verstecke unwichtige Elemente
+  .nav,
+  .cookie-banner,
+  .scroll-top,
+  .footer__social,
+  .contact__form,
+  video {
+    display: none !important;
+  }
+
+  // Optimiere Layout
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  // Zeige URLs an
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  // Seitenumbrüche
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  // Bilder
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  // Kontaktinformationen hervorheben
+  .contact__info {
+    border: 1px solid #000;
+    padding: 1cm;
+    margin: 1cm 0;
+  }
+}
