@@ -8,4 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   initNavigation();
   initScrollEffects();
+  console.log('Initialisiere alle Module') // TMP
+});
+
+// TMP
+document.querySelector('.hero__video').addEventListener('error', function(e) {
+  console.error('Video error:', e);
 });
