@@ -1,0 +1,173 @@
+/* Reset & Basis-Styles */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+@media (max-width: 768px) {
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+a {
+  color: #D4145A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 8rem 0;
+}
+.section--light {
+  background-color: #F5F5F5;
+}
+.section--dark {
+  background-color: rgb(232.25, 232.25, 232.25);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn--primary {
+  background-color: #D4145A;
+  color: white;
+}
+.btn--primary:hover {
+  background-color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+  transform: translateY(-2px);
+}
+.btn--secondary {
+  background-color: #808080;
+  color: white;
+}
+.btn--secondary:hover {
+  background-color: rgb(102.5, 102.5, 102.5);
+  transform: translateY(-2px);
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #D4145A;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 500;
+}
+.scroll-top.visible {
+  opacity: 1;
+}
+.scroll-top:hover {
+  transform: translateY(-3px);
+  background-color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+}
+
+/*# sourceMappingURL=_base.css.map */

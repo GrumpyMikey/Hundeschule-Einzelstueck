@@ -23,7 +23,7 @@
   color: #D4145A;
 }
 .header.scrolled .nav__menu a:hover {
-  color: white;
+  color: black;
 }
 
 .nav {
@@ -84,7 +84,10 @@
   color: white;
   transition: color 0.3s ease;
 }
-.nav__social a:hover {
+.header.scrolled .nav__social a {
+  color: #D4145A;
+}
+.header.scrolled .nav__social a:hover {
   color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
 }
 .nav__toggle {
@@ -92,6 +95,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 1rem;
 }
 @media (max-width: 768px) {
   .nav__toggle {
@@ -104,6 +108,10 @@
   height: 2px;
   background-color: white;
   position: relative;
+  transition: background-color 0.3s ease;
+}
+.header.scrolled .nav__toggle span {
+  background-color: #D4145A;
 }
 .nav__toggle span::before, .nav__toggle span::after {
   content: "";
@@ -112,6 +120,9 @@
   height: 100%;
   background-color: white;
   transition: all 0.3s ease;
+}
+.header.scrolled .nav__toggle span::before, .header.scrolled .nav__toggle span::after {
+  background-color: #D4145A;
 }
 .nav__toggle span::before {
   top: -8px;

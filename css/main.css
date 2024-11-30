@@ -475,61 +475,49 @@ a:hover {
 /* Dogs Section */
 .dogs {
   background-color: white;
-  color: #333333;
 }
-.dogs__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+.dogs__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0;
 }
-@media (max-width: 992px) {
-  .dogs__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.dog-card {
-  background-color: white;
+.dogs__image {
+  margin-bottom: 4rem;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 }
-.dog-card:hover {
-  transform: translateY(-10px);
-}
-.dog-card:hover .dog-card__image img {
-  transform: scale(1.1);
-}
-.dog-card__image {
-  position: relative;
-  overflow: hidden;
-}
-.dog-card__image::before {
-  content: "";
-  display: block;
-  padding-top: 75%;
-}
-.dog-card__image img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.dogs__image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   transition: transform 0.5s ease;
 }
-.dog-card__content {
-  padding: 2rem;
+.dogs__image img:hover {
+  transform: scale(1.02);
 }
-.dog-card__name {
-  color: #D4145A;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-}
-.dog-card__description {
+.dogs__text p {
+  margin-bottom: 2rem;
+  line-height: 1.8;
   color: #333333;
-  line-height: 1.6;
+}
+.dogs__text p:last-child {
+  margin-bottom: 0;
+}
+.dogs__text p strong {
+  color: #D4145A;
+  font-size: 1.2em;
+}
+@media (min-width: 768px) {
+  .dogs__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: start;
+  }
+  .dogs__image {
+    margin-bottom: 0;
+  }
 }
 
 /* Prices Section */
@@ -918,6 +906,58 @@ a:hover {
     margin: 1cm 0;
   }
 }
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #D4145A;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 3px solid #D4145A;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.high-contrast {
+  color: rgb(25.5, 25.5, 25.5);
+}
+@media (prefers-color-scheme: dark) {
+  .high-contrast {
+    color: white;
+  }
+}
+
+[aria-hidden=true] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -991,59 +1031,6 @@ a:hover {
 .cookie-banner__button--decline:hover {
   background-color: #808080;
   color: white;
-}
-
-.skip-link {
-  position: absolute;
-  top: -9999px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #D4145A;
-  color: white;
-  padding: 1rem 2rem;
-  text-decoration: none;
-}
-.skip-link:focus {
-  top: 0;
-}
-
-:focus-visible {
-  outline: 3px solid #D4145A;
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.high-contrast {
-  color: rgb(25.5, 25.5, 25.5);
-}
-@media (prefers-color-scheme: dark) {
-  .high-contrast {
-    color: white;
-  }
-}
-
-[aria-hidden=true] {
-  display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */
