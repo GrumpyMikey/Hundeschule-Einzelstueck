@@ -194,70 +194,61 @@
 
 /* Dogs Section */
 .dogs {
-
-  background-color: white; // Hier hinzufügen
-  color: $color-text; // Hier hinzufügen
-
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-lg;
-
-    @media (max-width: $breakpoint-lg) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-}
-.dog-card {
   background-color: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform $transition-fast;
 
-  &:hover {
-    transform: translateY(-10px);
-
-    .dog-card__image img {
-      transform: scale(1.1);
-    }
+  &__content {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $spacing-lg 0;
   }
 
   &__image {
-    position: relative;
+    margin-bottom: $spacing-lg;
+    border-radius: 15px;
     overflow: hidden;
-
-    &::before {
-      content: '';
-      display: block;
-      padding-top: 75%; // 4:3 Aspect ratio
-    }
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
       transition: transform $transition-normal;
+
+      &:hover {
+        transform: scale(1.02);
+      }
     }
   }
 
-  &__content {
-    padding: $spacing-md;
+  &__text {
+    p {
+      margin-bottom: $spacing-md;
+      line-height: 1.8;
+      color: $color-text;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        color: $color-primary;
+        font-size: 1.2em;
+      }
+    }
   }
 
-  &__name {
-    color: $color-primary;
-    margin-bottom: $spacing-sm;
-    font-size: 1.8rem;
-  }
+  // Responsive Design
+  @media (min-width: $breakpoint-md) {
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-xl;
+      align-items: start;
+    }
 
-  &__description {
-    color: $color-text;
-    line-height: 1.6;
+    &__image {
+      margin-bottom: 0;
+    }
   }
 }
 
