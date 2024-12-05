@@ -75,13 +75,28 @@ export function initSlideshow() {
       const allImages = imagesContainer.querySelectorAll('img');
       const allDots = dotsContainer.querySelectorAll('.slideshow__dot');
 
+      // Entferne alle prev-active Klassen
+      allImages.forEach(img => img.classList.remove('prev-active'));
+
+      // Setze das aktuelle Bild als prev-active
+      allImages[currentIndex].classList.add('prev-active');
       allImages[currentIndex].classList.remove('active');
       allDots[currentIndex].classList.remove('active');
 
       currentIndex = newIndex;
 
+      // Aktiviere das neue Bild
       allImages[currentIndex].classList.add('active');
       allDots[currentIndex].classList.add('active');
+
+      // Entferne prev-active nach der Übergangszeit
+      setTimeout(() => {
+        allImages.forEach((img, idx) => {
+          if (idx !== currentIndex) {
+            img.classList.remove('prev-active');
+          }
+        });
+      }, 2000); // Entspricht der Übergangszeit
     };
 
     const nextSlide = () => {
