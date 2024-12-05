@@ -303,6 +303,7 @@ a:hover {
   bottom: -8px;
 }
 
+/**********************************************************************************************************************/
 /* Hero Section */
 .hero {
   position: relative;
@@ -355,6 +356,7 @@ a:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/**********************************************************************************************************************/
 /* Stats Section */
 .stats {
   padding: 8rem 0;
@@ -387,6 +389,7 @@ a:hover {
   color: #808080;
 }
 
+/**********************************************************************************************************************/
 /* FAQ Section */
 .faq__grid {
   display: grid;
@@ -415,6 +418,7 @@ a:hover {
   font-size: 1.5rem;
 }
 
+/**********************************************************************************************************************/
 /* Section Title */
 .section__title {
   text-align: center;
@@ -429,6 +433,7 @@ a:hover {
   margin: 1rem auto 0;
 }
 
+/**********************************************************************************************************************/
 /* About Section */
 .about__content {
   display: grid;
@@ -472,6 +477,7 @@ a:hover {
   margin-bottom: 0;
 }
 
+/**********************************************************************************************************************/
 /* Dogs Section */
 .dogs {
   background-color: white;
@@ -487,14 +493,111 @@ a:hover {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-.dogs__image img {
+.dogs__image .slideshow {
+  position: relative;
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.5s ease;
+  height: 400px;
+  overflow: hidden;
 }
-.dogs__image img:hover {
-  transform: scale(1.02);
+.dogs__image .slideshow__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.dogs__image .slideshow .spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #D4145A;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.dogs__image .slideshow__images {
+  display: none;
+  height: 100%;
+}
+.dogs__image .slideshow__images img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.dogs__image .slideshow__images img.active {
+  opacity: 1;
+}
+.dogs__image .slideshow__navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+.dogs__image .slideshow__nav-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  pointer-events: auto;
+}
+.dogs__image .slideshow__nav-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.dogs__image .slideshow__dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.dogs__image .slideshow__dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.dogs__image .slideshow__dot.active {
+  background: white;
+}
+.dogs__image .slideshow__dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.dogs__image .slideshow__error {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #D4145A;
+  text-align: center;
+  padding: 20px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .dogs__text p {
   margin-bottom: 2rem;
@@ -520,6 +623,7 @@ a:hover {
   }
 }
 
+/**********************************************************************************************************************/
 /* Prices Section */
 .prices__grid {
   display: grid;
@@ -566,6 +670,7 @@ a:hover {
   color: #D4145A;
 }
 
+/**********************************************************************************************************************/
 /* Contact Section */
 .contact {
   background-color: white;
