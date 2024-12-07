@@ -206,12 +206,29 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
 }
+.nav__logo {
+  position: relative;
+  width: 150px;
+  margin: 1rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
 .nav__logo img {
-  height: 60px;
-  transition: height 0.3s ease;
+  width: 100%;
+  height: auto;
+  transition: all 0.3s ease;
 }
 .header.scrolled .nav__logo img {
-  height: 45px;
+  transform: scale(0.75);
+}
+.nav__logo--transform {
+  opacity: 1;
+  animation: shrinkLogo 0.8s ease forwards;
+}
+@media (max-width: 768px) {
+  .nav__logo {
+    width: 120px;
+  }
 }
 @media (max-width: 768px) {
   .nav__menu {
@@ -240,14 +257,26 @@ a:hover {
 .nav__menu li {
   margin: 0 1rem;
 }
+@media (max-width: 768px) {
+  .nav__menu li {
+    margin: 0.5rem 0;
+  }
+}
 .nav__menu a {
   color: white;
   font-weight: 600;
   padding: 0.5rem;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 .nav__menu a:hover {
   color: #D4145A;
+}
+@media (max-width: 768px) {
+  .nav__menu a {
+    display: block;
+    padding: 0.5rem 0;
+  }
 }
 .nav__social {
   font-size: 1.5rem;
@@ -262,12 +291,18 @@ a:hover {
 .header.scrolled .nav__social a:hover {
   color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
 }
+@media (max-width: 768px) {
+  .nav__social {
+    font-size: 1.2rem;
+  }
+}
 .nav__toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 1rem;
+  z-index: 100;
 }
 @media (max-width: 768px) {
   .nav__toggle {
@@ -302,6 +337,66 @@ a:hover {
 .nav__toggle span::after {
   bottom: -8px;
 }
+.nav__toggle.active span {
+  background-color: transparent;
+}
+.nav__toggle.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.nav__toggle.active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.section {
+  padding: 8rem 0;
+}
+.section--light {
+  background-color: #F5F5F5;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+@keyframes shrinkLogo {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #D4145A;
+  color: white;
+  padding: 1rem 2rem;
+  z-index: 801;
+  text-decoration: none;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
 
 /**********************************************************************************************************************/
 /* Hero Section */
@@ -311,6 +406,40 @@ a:hover {
   min-height: 600px;
   overflow: hidden;
 }
+.hero__video-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.hero__logo-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+.hero__logo-placeholder.fade-out {
+  opacity: 0;
+}
+.hero__logo {
+  width: 80vw;
+  max-width: 500px;
+  height: auto;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
+@media (max-width: 768px) {
+  .hero__logo {
+    width: 90vw;
+  }
+}
 .hero__video {
   position: absolute;
   top: 0;
@@ -318,16 +447,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-}
-.hero__video::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 .hero__content {
   position: relative;
@@ -339,6 +459,7 @@ a:hover {
   text-align: center;
   color: white;
   padding: 2rem;
+  z-index: 3;
 }
 .hero__content h1 {
   font-size: 4rem;
@@ -356,6 +477,17 @@ a:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 /**********************************************************************************************************************/
 /* Stats Section */
 .stats {
@@ -1144,6 +1276,48 @@ a:hover {
 .cookie-banner__button--decline:hover {
   background-color: #808080;
   color: white;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+.preloader__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preloader__logo {
+  width: 80vw;
+  max-width: 500px;
+  height: auto;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
+.preloader--fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

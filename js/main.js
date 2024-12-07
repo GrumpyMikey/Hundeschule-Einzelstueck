@@ -5,12 +5,16 @@ import { initScrollEffects } from './modules/scroll.js';
 import { initVideo } from './modules/video.js';
 import { initSlideshow } from './modules/slideshow.js';
 
+// In main.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialisiere alle Module
-  console.log('Initialisiere alle Module');
+  // Preloader zuerst initialisieren
   initPreloader();
-  initNavigation();
-  initScrollEffects();
-  initVideo();
-  initSlideshow();
+
+  // Andere Module erst nach dem Preloader laden
+  window.addEventListener('load', () => {
+    initNavigation();
+    initScrollEffects();
+    initVideo();
+    initSlideshow();
+  });
 });

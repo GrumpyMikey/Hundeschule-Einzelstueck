@@ -1,3 +1,4 @@
+// modules/slideshow.js
 export function initSlideshow() {
   const slideshowContainer = document.querySelector('.slideshow');
   if (!slideshowContainer) return;
@@ -32,11 +33,11 @@ export function initSlideshow() {
     let currentIndex = 0;
     let slideInterval;
 
-    // Prüfe verfügbare Bilder
+    // Prüfe verfügbare Bilder - Angepasster Pfad für den Unterordner
     try {
       let imageCount = 1;
       while (true) {
-        const response = await fetch(`assets/images/dogs-${imageCount}.jpeg`);
+        const response = await fetch(`assets/images/slideshow-dogs/dogs-${imageCount}.jpeg`);
         if (!response.ok) break;
         images.push(`dogs-${imageCount}.jpeg`);
         imageCount++;
@@ -54,9 +55,9 @@ export function initSlideshow() {
 
     // Erstelle Image-Tags und Navigationspunkte
     images.forEach((image, index) => {
-      // Erstelle Bild
+      // Erstelle Bild - Angepasster Pfad für den Unterordner
       const img = document.createElement('img');
-      img.src = `assets/images/${image}`;
+      img.src = `assets/images/slideshow-dogs/${image}`;
       img.alt = `Meine Hunde ${index + 1}`;
       img.classList.toggle('active', index === 0);
       imagesContainer.appendChild(img);

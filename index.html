@@ -84,12 +84,6 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
-<!-- Preloader -->
-<div class="preloader">
-  <div class="preloader__content">
-    <!-- Logo Animation hier -->
-  </div>
-</div>
 
 <!-- Cookie-Banner -->
 <div class="cookie-banner" id="cookieBanner">
@@ -130,14 +124,13 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero__video-wrapper">
+      <!-- Das Logo wird hier per JS eingefügt -->
       <video
         class="hero__video"
         autoplay muted loop playsinline
-        poster="assets/images/fallback-image.png"
-        preload="none">
+        poster="assets/images/fallback-image.png">
         <source data-src="https://github.com/GrumpyMikey/Hundeschule-Einzelstueck/raw/refs/heads/main/assets/videos/hero-video.mp4" type="video/mp4">
       </video>
-      <div class="hero__fallback" style="background-image: url('assets/images/fallback-image.png')"></div>
     </div>
     <div class="hero__content">
       <h1 class="fade-in">Hundeschule Einzelstück</h1>
