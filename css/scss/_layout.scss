@@ -81,9 +81,18 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: $color-background;
+        background-color: white;
         padding: $spacing-md;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        // Wichtig: Styles direkt für die aktiven Menüpunkte
+        a {
+          color: $color-text !important;
+
+          &:hover {
+            color: $color-primary !important;
+          }
+        }
       }
     }
 
@@ -162,7 +171,7 @@
       height: 2px;
       background-color: white;
       position: relative;
-      transition: background-color $transition-fast;
+      transition: all $transition-fast;
 
       .header.scrolled & {
         background-color: $color-primary;
@@ -172,8 +181,9 @@
       &::after {
         content: '';
         position: absolute;
+        left: 0; // Dies ist wichtig für die Ausrichtung
         width: 100%;
-        height: 100%;
+        height: 2px;
         background-color: white;
         transition: all $transition-fast;
 
@@ -193,16 +203,23 @@
 
     &.active {
       span {
-        background-color: transparent;
+        background-color: transparent !important;
+
+        &::before,
+        &::after {
+          background-color: white; // oder $color-text für dunkel
+        }
 
         &::before {
           top: 0;
           transform: rotate(45deg);
+          background-color: $color-primary;
         }
 
         &::after {
           bottom: 0;
           transform: rotate(-45deg);
+          background-color: $color-primary;
         }
       }
     }
