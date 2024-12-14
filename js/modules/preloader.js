@@ -1,12 +1,15 @@
-// modules/preloader.js
 export function initPreloader() {
   const videoWrapper = document.querySelector('.hero__video-wrapper');
   const video = document.querySelector('.hero__video');
   const headerLogo = document.querySelector('.nav__logo');
+  const heroContent = document.querySelector('.hero__content');
 
-  // Header-Logo zunächst ausblenden
+  // Anfangs alles ausblenden
   if (headerLogo) {
     headerLogo.style.opacity = '0';
+  }
+  if (heroContent) {
+    heroContent.style.opacity = '0';
   }
 
   // Lade das SVG-Logo
@@ -29,10 +32,18 @@ export function initPreloader() {
         setTimeout(() => {
           // Fade-out für Logo-Placeholder
           logoContainer.classList.add('fade-out');
+
           // Fade-in für Header-Logo
           if (headerLogo) {
             headerLogo.style.opacity = '1';
+            headerLogo.classList.add('nav__logo--transform');
           }
+
+          // Fade-in für Hero-Content
+          if (heroContent) {
+            heroContent.classList.add('hero__content--visible');
+          }
+
           // Entferne das Logo nach der Fade-Animation
           setTimeout(() => {
             logoContainer.remove();
@@ -42,9 +53,12 @@ export function initPreloader() {
     })
     .catch(error => {
       console.error('Error loading logo:', error);
-      // Bei Fehler Header-Logo wieder einblenden
+      // Bei Fehler alles einblenden
       if (headerLogo) {
         headerLogo.style.opacity = '1';
+      }
+      if (heroContent) {
+        heroContent.classList.add('hero__content--visible');
       }
     });
 }
