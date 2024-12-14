@@ -1,0 +1,120 @@
+@charset "UTF-8";
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 700;
+  overflow-y: auto;
+}
+.modal__content {
+  position: relative;
+  background-color: white;
+  margin: 5% auto;
+  padding: 8rem;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 15px;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.modal__content.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+.modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+.modal__content::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+.modal__content::-webkit-scrollbar-thumb {
+  background: #D4145A;
+  border-radius: 4px;
+}
+.modal__content::-webkit-scrollbar-thumb:hover {
+  background: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+}
+.modal__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #808080;
+  transition: color 0.3s ease;
+}
+.modal__close:hover {
+  color: #D4145A;
+}
+.modal .story-content {
+  line-height: 1.8;
+  color: #333333;
+}
+.modal .story-content .story-section {
+  margin-bottom: 8rem;
+}
+.modal .story-content .story-section h3 {
+  color: #D4145A;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #F5F5F5;
+}
+.modal .story-content .story-section h4 {
+  color: #808080;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.modal .story-content .dog-story {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.modal .story-content .dog-story:hover {
+  transform: translateY(-5px);
+}
+.modal .story-content .training-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+.modal .story-content .training-list li {
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.modal .story-content .training-list li::before {
+  content: "•";
+  color: #D4145A;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+.modal .story-content .story-footer {
+  margin-top: 8rem;
+  padding-top: 4rem;
+  border-top: 2px solid #F5F5F5;
+  text-align: center;
+}
+.modal .story-content .story-footer .signature {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #D4145A;
+}
+@media (max-width: 768px) {
+  .modal .story-content .story-section h3 {
+    font-size: 1.5rem;
+  }
+  .modal .story-content .story-section h4 {
+    font-size: 1.2rem;
+  }
+}
+
+/*# sourceMappingURL=_modal.css.map */

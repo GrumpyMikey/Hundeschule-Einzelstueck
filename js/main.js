@@ -4,6 +4,7 @@ import { initPreloader } from './modules/preloader.js';
 import { initScrollEffects } from './modules/scroll.js';
 import { initVideo } from './modules/video.js';
 import { initSlideshow } from './modules/slideshow.js';
+import initModal from './modules/modal.js';
 
 // In main.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,5 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollEffects();
     initVideo();
     initSlideshow();
+    initModal();
   });
 });
