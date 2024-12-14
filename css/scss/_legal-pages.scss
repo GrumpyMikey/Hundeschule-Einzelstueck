@@ -1,0 +1,100 @@
+// css/scss/_legal-pages.scss
+
+@use 'variables' as *;
+
+.privacy-policy,
+.legal {
+  padding-top: 120px; // Platz für Header
+  padding-bottom: $spacing-xl;
+  background-color: $color-light;
+
+  .container {
+    max-width: 800px; // Schmaler für bessere Lesbarkeit
+  }
+
+  h1 {
+    color: $color-primary;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+  }
+
+  section {
+    background-color: white;
+    padding: $spacing-lg;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    color: $color-primary;
+    font-size: 1.8rem;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $color-light;
+  }
+
+  h3 {
+    color: $color-secondary;
+    font-size: 1.4rem;
+    margin: $spacing-md 0 $spacing-sm;
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+    line-height: 1.6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    li {
+      margin-bottom: $spacing-xs;
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: underline;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: darken($color-primary, 10%);
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding-top: 100px;
+
+    section {
+      padding: $spacing-md;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+}

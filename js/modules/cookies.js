@@ -1,29 +1,40 @@
 // modules/cookies.js
 
 export function initCookieConsent() {
-  const cookieBanner = document.querySelector('.cookie-banner');
-  const acceptBtn = document.querySelector('.cookie-accept');
-  const declineBtn = document.querySelector('.cookie-decline');
+  const cookieBanner = document.getElementById('cookieBanner');
 
-  // Prüfe ob bereits eine Entscheidung getroffen wurde
+  // Banner HTML erstellen
+  const bannerContent = `
+    <div class="cookie-banner__content">
+      <p class="cookie-banner__text">
+        Diese Website verwendet nur technisch notwendige Cookies.
+        Mehr Informationen findest du in unserer
+        <a href="/datenschutz.html">Datenschutzerklärung</a>.
+      </p>
+      <div class="cookie-banner__buttons">
+        <button class="cookie-banner__button cookie-banner__button--accept" id="cookieAccept">
+          Verstanden
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Wenn noch keine Entscheidung getroffen wurde, zeige Banner
   if (!localStorage.getItem('cookieConsent')) {
-    cookieBanner.style.display = 'block';
+    cookieBanner.innerHTML = bannerContent;
+    setTimeout(() => {
+      cookieBanner.classList.add('visible');
+    }, 1000);
+
+    // Event Listener für den Accept Button
+    document.getElementById('cookieAccept')?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner.classList.remove('visible');
+
+      // Nach der Animation Banner komplett entfernen
+      setTimeout(() => {
+        cookieBanner.style.display = 'none';
+      }, 500);
+    });
   }
-
-  acceptBtn?.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    cookieBanner.style.display = 'none';
-    // Hier können weitere Cookies/Tracking aktiviert werden
-    initGoogleAnalytics();
-  });
-
-  declineBtn?.addEventListener('click', () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    cookieBanner.style.display = 'none';
-  });
-}
-
-function initGoogleAnalytics() {
-  // Google Analytics Code hier einfügen
-  // Nur wenn Cookies akzeptiert wurden
 }

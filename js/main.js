@@ -5,6 +5,7 @@ import { initPreloader } from './modules/preloader.js';
 import { initScrollEffects } from './modules/scroll.js';
 import { initVideo } from './modules/video.js';
 import { initSlideshow } from './modules/slideshow.js';
+import { initCookieConsent } from './modules/cookies.js';
 import initModal from './modules/modal.js';
 
 // In main.js
@@ -19,5 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideo();
     initSlideshow();
     initModal();
+    initCookieConsent();
   });
 });

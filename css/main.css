@@ -1373,9 +1373,8 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   z-index: 900;
   transform: translateY(100%);
@@ -1389,7 +1388,6 @@ a:hover {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 2rem;
 }
 @media (max-width: 768px) {
@@ -1400,6 +1398,8 @@ a:hover {
 }
 .cookie-banner__text {
   font-size: 0.9rem;
+  line-height: 1.5;
+  color: #333333;
 }
 .cookie-banner__text a {
   color: #D4145A;
@@ -1408,23 +1408,14 @@ a:hover {
 .cookie-banner__text a:hover {
   color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
 }
-.cookie-banner__buttons {
-  display: flex;
-  gap: 1rem;
-}
-@media (max-width: 768px) {
-  .cookie-banner__buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-}
 .cookie-banner__button {
-  padding: 1rem 2rem;
+  padding: 1rem 4rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
+  white-space: nowrap;
 }
 .cookie-banner__button--accept {
   background-color: #D4145A;
@@ -1432,15 +1423,13 @@ a:hover {
 }
 .cookie-banner__button--accept:hover {
   background-color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+  transform: translateY(-2px);
 }
-.cookie-banner__button--decline {
-  background-color: transparent;
-  border: 1px solid #808080;
-  color: #808080;
-}
-.cookie-banner__button--decline:hover {
-  background-color: #808080;
-  color: white;
+@media (max-width: 768px) {
+  .cookie-banner__button {
+    width: 100%;
+    margin-top: 1rem;
+  }
 }
 
 .preloader {
@@ -1599,6 +1588,105 @@ a:hover {
   }
   .modal .story-content .story-section h4 {
     font-size: 1.2rem;
+  }
+}
+
+.privacy-policy,
+.legal {
+  padding-top: 120px;
+  padding-bottom: 8rem;
+  background-color: #F5F5F5;
+}
+.privacy-policy .container,
+.legal .container {
+  max-width: 800px;
+}
+.privacy-policy h1,
+.legal h1 {
+  color: #D4145A;
+  margin-bottom: 8rem;
+  text-align: center;
+}
+.privacy-policy section,
+.legal section {
+  background-color: white;
+  padding: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+}
+.privacy-policy section:last-child,
+.legal section:last-child {
+  margin-bottom: 0;
+}
+.privacy-policy h2,
+.legal h2 {
+  color: #D4145A;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #F5F5F5;
+}
+.privacy-policy h3,
+.legal h3 {
+  color: #808080;
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+}
+.privacy-policy p,
+.legal p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.privacy-policy p:last-child,
+.legal p:last-child {
+  margin-bottom: 0;
+}
+.privacy-policy ul,
+.legal ul {
+  list-style: disc;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+.privacy-policy ul li,
+.legal ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+.privacy-policy ul li:last-child,
+.legal ul li:last-child {
+  margin-bottom: 0;
+}
+.privacy-policy a,
+.legal a {
+  color: #D4145A;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.privacy-policy a:hover,
+.legal a:hover {
+  color: rgb(165.3965517241, 15.6034482759, 70.2155172414);
+}
+@media (max-width: 768px) {
+  .privacy-policy,
+  .legal {
+    padding-top: 100px;
+  }
+  .privacy-policy section,
+  .legal section {
+    padding: 2rem;
+  }
+  .privacy-policy h1,
+  .legal h1 {
+    font-size: 2rem;
+  }
+  .privacy-policy h2,
+  .legal h2 {
+    font-size: 1.6rem;
+  }
+  .privacy-policy h3,
+  .legal h3 {
+    font-size: 1.3rem;
   }
 }
 
