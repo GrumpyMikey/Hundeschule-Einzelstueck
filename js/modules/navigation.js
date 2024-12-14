@@ -1,4 +1,5 @@
 // modules/navigation.js
+
 export function initNavigation() {
   const header = document.querySelector('.header');
   const navToggle = document.querySelector('.nav__toggle');

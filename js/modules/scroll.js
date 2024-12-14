@@ -1,4 +1,5 @@
 // modules/scroll.js
+
 export function initScrollEffects() {
   const scrollTopBtn = document.querySelector('.scroll-top');
 

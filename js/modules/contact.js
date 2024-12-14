@@ -1,4 +1,5 @@
 // modules/contact.js
+
 export function initContactForm() {
   const form = document.getElementById('contactForm');
 

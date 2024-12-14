@@ -1,4 +1,5 @@
 // modules/slideshow.js
+
 export function initSlideshow() {
   const slideshowContainer = document.querySelector('.slideshow');
   if (!slideshowContainer) return;

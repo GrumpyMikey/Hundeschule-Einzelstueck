@@ -1,3 +1,5 @@
+// modules/video.js
+
 export function initVideo() {
 
   const video = document.querySelector('.hero__video');

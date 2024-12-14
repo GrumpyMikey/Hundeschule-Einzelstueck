@@ -1,4 +1,5 @@
 // modules/cookies.js
+
 export function initCookieConsent() {
   const cookieBanner = document.querySelector('.cookie-banner');
   const acceptBtn = document.querySelector('.cookie-accept');

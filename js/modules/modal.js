@@ -1,3 +1,5 @@
+// modules/modal.js
+
 export default function initModal() {
   const storyButton = document.querySelector('[data-story-toggle]');
   const modal = document.querySelector('.modal');

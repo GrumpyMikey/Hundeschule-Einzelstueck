@@ -1,3 +1,5 @@
+// modules/preloader.js
+
 export function initPreloader() {
   const videoWrapper = document.querySelector('.hero__video-wrapper');
   const video = document.querySelector('.hero__video');
