@@ -47,7 +47,7 @@
   }
 
   &__button {
-    padding: $spacing-sm $spacing-lg;
+    padding: $spacing-sm $spacing-md;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -55,7 +55,7 @@
     font-weight: 500;
     white-space: nowrap;
 
-    &--accept {
+    &--accept-all {
       background-color: $color-primary;
       color: white;
 
@@ -65,9 +65,154 @@
       }
     }
 
+    &--accept-essential {
+      background-color: transparent;
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
+
+      &:hover {
+        background-color: $color-secondary;
+        color: white;
+      }
+    }
+
     @media (max-width: $breakpoint-md) {
       width: 100%;
       margin-top: $spacing-sm;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-md;
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: $color-text;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: $spacing-xs;
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
+  &__options {
+    margin: $spacing-md 0;
+  }
+
+  .cookie-option {
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm;
+    border-radius: 5px;
+    background-color: rgba($color-light, 0.5);
+
+    &__header {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-xs;
+    }
+
+    &__title {
+      margin-left: $spacing-sm;
+      font-weight: 600;
+    }
+
+    &__description {
+      font-size: 0.9rem;
+      color: $color-secondary;
+    }
+  }
+
+  // Cookie-Switch Styling
+  .cookie-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked + .cookie-slider {
+        background-color: $color-primary;
+      }
+
+      &:checked + .cookie-slider:before {
+        transform: translateX(26px);
+      }
+
+      &:disabled + .cookie-slider {
+        background-color: lighten($color-secondary, 20%);
+        cursor: not-allowed;
+      }
+    }
+
+    .cookie-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $color-secondary;
+      transition: $transition-fast;
+      border-radius: 34px;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: $transition-fast;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    // Bestehende Button-Styles...
+
+    &--accept-all {
+      background-color: $color-primary;
+      color: white;
+    }
+
+    &--accept-selection {
+      background-color: $color-secondary;
+      color: white;
+    }
+
+    &--reject-all {
+      background-color: transparent;
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
     }
   }
 }
