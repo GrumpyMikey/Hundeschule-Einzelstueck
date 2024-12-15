@@ -25,6 +25,12 @@
     opacity: 0;
     transition: all $transition-normal;
 
+    @media (max-width: $breakpoint-md) {
+      width: 95%; // Mehr Breite auf mobilen Geräten
+      margin: 2% auto; // Weniger vertikaler Abstand
+      padding: $spacing-md; // Weniger Padding
+    }
+
     &.active {
       transform: translateY(0);
       opacity: 1;
@@ -67,8 +73,16 @@
     line-height: 1.8;
     color: $color-text;
 
+    @media (max-width: $breakpoint-md) {
+      line-height: 1.6; // Etwas engerer Zeilenabstand
+    }
+
     .story-section {
       margin-bottom: $spacing-xl;
+
+      @media (max-width: $breakpoint-md) {
+        margin-bottom: $spacing-lg; // Weniger Abstand zwischen Sektionen
+      }
 
       h3 {
         color: $color-primary;
@@ -88,9 +102,15 @@
     .dog-story {
       margin-bottom: $spacing-lg;
       padding: $spacing-md;
-      background-color: $color-light;
+      background-color: $color-light; // Wichtig: Der hellgraue Hintergrund
       border-radius: 10px;
       transition: transform $transition-fast;
+
+      @media (max-width: $breakpoint-md) {
+        padding: $spacing-sm; // Weniger Padding in den Cards
+        margin-bottom: $spacing-md; // Weniger Abstand zwischen Cards
+        background-color: $color-light; // Beibehaltung des Hintergrunds
+      }
 
       &:hover {
         transform: translateY(-5px);
