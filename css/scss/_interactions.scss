@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // _interactions.scss
 @use 'variables' as *;
 
@@ -65,14 +67,14 @@
   margin-bottom: $spacing-md;
 
   &--success {
-    background-color: lighten(green, 65%);
-    color: darken(green, 10%);
+    background-color: color.adjust(green, $lightness: 65%, $space: hsl);
+    color: color.adjust(green, $lightness: -10%, $space: hsl);
     border: 1px solid green;
   }
 
   &--error {
-    background-color: lighten(red, 45%);
-    color: darken(red, 10%);
+    background-color: color.adjust(red, $lightness: 45%, $space: hsl);
+    color: color.adjust(red, $lightness: -10%, $space: hsl);
     border: 1px solid red;
   }
 }

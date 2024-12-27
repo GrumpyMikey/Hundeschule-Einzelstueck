@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:color";
+
 // _cookie-banner.scss
 
 @use 'variables' as *;
@@ -13,7 +16,7 @@
   overflow-y: auto; // Innerhalb des Banners scrollen, wenn der Inhalt zu groß ist
   width: 100%; // Sicherstellen, dass es mobil 100% der Breite nutzt
   padding: $spacing-md;
-  z-index: map-get($z-index, 'cookie-banner');
+  z-index: map.get($z-index, 'cookie-banner');
   transform: translateY(100%); // Banner start ausgeblendet
   opacity: 0; // Start ohne Sichtbarkeit
   pointer-events: none; // Keine Interaktionen möglich, während es ausgeblendet ist
@@ -49,7 +52,7 @@
       text-decoration: underline;
 
       &:hover {
-        color: darken($color-primary, 10%);
+        color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
       }
     }
   }
@@ -69,7 +72,7 @@
       color: white;
 
       &:hover {
-        background-color: darken($color-primary, 10%);
+        background-color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
         transform: translateY(-2px);
       }
     }
@@ -167,7 +170,7 @@
       }
 
       &:disabled + .cookie-slider {
-        background-color: lighten($color-secondary, 20%);
+        background-color: color.adjust($color-secondary, $lightness: 20%, $space: hsl);
         cursor: not-allowed;
       }
     }

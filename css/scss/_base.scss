@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:color";
+
 // _base.scss
 @use 'variables' as *;
 
@@ -59,7 +62,7 @@ a {
   transition: color $transition-fast;
 
   &:hover {
-    color: darken($color-primary, 10%);
+    color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
   }
 }
 
@@ -78,7 +81,7 @@ a {
   }
 
   &--dark {
-    background-color: darken($color-light, 5%);
+    background-color: color.adjust($color-light, $lightness: -5%, $space: hsl);
   }
 }
 
@@ -114,7 +117,7 @@ a {
     color: white;
 
     &:hover {
-      background-color: darken($color-primary, 10%);
+      background-color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
       transform: translateY(-2px);
     }
   }
@@ -124,7 +127,7 @@ a {
     color: white;
 
     &:hover {
-      background-color: darken($color-secondary, 10%);
+      background-color: color.adjust($color-secondary, $lightness: -10%, $space: hsl);
       transform: translateY(-2px);
     }
   }
@@ -141,7 +144,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: map-get($z-index, 'preloader');
+  z-index: map.get($z-index, 'preloader');
   transition: opacity $transition-normal;
 
   &.hidden {
@@ -166,7 +169,7 @@ a {
   cursor: pointer;
   opacity: 0;
   transition: all $transition-fast;
-  z-index: map-get($z-index, 'scroll-top');
+  z-index: map.get($z-index, 'scroll-top');
 
   &.visible {
     opacity: 1;
@@ -174,6 +177,6 @@ a {
 
   &:hover {
     transform: translateY(-3px);
-    background-color: darken($color-primary, 10%);
+    background-color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
   }
 }

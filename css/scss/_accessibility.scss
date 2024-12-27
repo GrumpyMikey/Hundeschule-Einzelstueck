@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:color";
+
 // accessibility.scss
 
 @use 'variables' as *;
@@ -11,7 +14,7 @@
   background: $color-primary;
   color: white;
   padding: $spacing-sm $spacing-md;
-  z-index: map-get($z-index, 'skip-link');
+  z-index: map.get($z-index, 'skip-link');
   text-decoration: none;
 
   &:focus {
@@ -40,7 +43,7 @@
 
 // Verbesserte Kontraste für Text
 .high-contrast {
-  color: darken($color-text, 10%);
+  color: color.adjust($color-text, $lightness: -10%, $space: hsl);
 
   @media (prefers-color-scheme: dark) {
     color: white;

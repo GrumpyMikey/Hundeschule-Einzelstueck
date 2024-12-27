@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // _sections.scss
 
 @use 'variables' as *;
@@ -551,7 +553,7 @@
       margin-right: $spacing-md;
 
       &:hover {
-        color: darken($color-primary, 10%);
+        color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
       }
     }
   }
@@ -578,7 +580,7 @@
     textarea {
       width: 100%;
       padding: $spacing-sm;
-      border: 1px solid lighten($color-secondary, 30%);
+      border: 1px solid color.adjust($color-secondary, $lightness: 30%, $space: hsl);
       border-radius: 5px;
       font-family: inherit;
 
