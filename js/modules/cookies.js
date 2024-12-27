@@ -124,6 +124,9 @@ function saveCookieConsent(consent) {
   if (consent.analytics) {
     initGoogleAnalytics();
   }
+
+  enableScrolling();
+
 }
 
 function initGoogleAnalytics() {
