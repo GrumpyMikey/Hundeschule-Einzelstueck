@@ -104,6 +104,10 @@ export function initCookieConsent() {
 
 // Funktion: Zustimmung speichern und Cookie-Banner ausblenden
 function saveCookieConsent(consent) {
+  // 1. Debugging: Logge die erhaltenen Zustimmungen in der Konsole
+  console.log("Cookie consent saved:", consent);
+
+  // 2. Update die lokale Speicherung
   localStorage.setItem(
     'cookieConsent',
     JSON.stringify({
@@ -113,20 +117,27 @@ function saveCookieConsent(consent) {
     })
   );
 
-  // Cookie-Banner ausblenden
+  // 3. Entferne das Cookie-Banner
   const cookieBanner = document.getElementById('cookieBanner');
   cookieBanner.classList.remove('visible');
   setTimeout(() => {
     cookieBanner.style.display = 'none';
   }, 500);
 
-  // Falls Analytics erlaubt ist
+  // 4. Analytics initialisieren, wenn der Nutzer zugestimmt hat
   if (consent.analytics) {
-    initGoogleAnalytics();
+    console.log("Analytics consent given. Initializing Google Analytics...");
+    try {
+      initGoogleAnalytics(); // Analytics initialisieren
+    } catch (error) {
+      console.error("Google Analytics konnte nicht initialisiert werden:", error);
+    }
+  } else {
+    console.log("Analytics consent NOT given. Skipping Analytics...");
   }
 
+  // 5. Scrolling für die Seite wieder aktivieren
   enableScrolling();
-
 }
 
 function initGoogleAnalytics() {
