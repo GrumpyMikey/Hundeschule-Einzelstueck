@@ -68,19 +68,32 @@ export function initCookieConsent() {
 
     // Event Listener für "Alle akzeptieren"
     document.getElementById('cookieAcceptAll')?.addEventListener('click', () => {
-      setConsent({
+      saveCookieConsent({
         essential: true,
-        analytics: true
+        analytics: true,
       });
     });
 
-    // Event Listener für "Nur notwendige"
-    document.getElementById('cookieAcceptEssential')?.addEventListener('click', () => {
-      setConsent({
-        essential: true,
-        analytics: false
+    // Für den "Auswahl bestätigen"-Button
+    document.getElementById('cookieAcceptSelection')?.addEventListener('click', () => {
+      const analyticsConsent = document.getElementById('analyticsConsent')?.checked || false;
+
+      // Zustimmung speichern
+      saveCookieConsent({
+        essential: true, // Technisch notwendige Cookies sind immer aktiv
+        analytics: analyticsConsent, // Übernehme die Auswahl des Nutzers
       });
     });
+
+    // Für den "Alle ablehnen"-Button
+    document.getElementById('cookieRejectAll')?.addEventListener('click', () => {
+      // Nur technisch notwendige Cookies zulassen, keine Analyse
+      saveCookieConsent({
+        essential: true, // Technisch notwendige Cookies sind immer aktiv
+        analytics: false, // Übernehme die Auswahl des Nutzers
+      });
+    });
+
   } else {
     // Wenn Analytics akzeptiert wurde, initialisieren
     if (cookieConsent.analytics) {
@@ -89,24 +102,26 @@ export function initCookieConsent() {
   }
 }
 
-function setConsent(settings) {
-  localStorage.setItem('cookieConsent', JSON.stringify({
-    processed: true,
-    timestamp: new Date().toISOString(),
-    ...settings
-  }));
+// Funktion: Zustimmung speichern und Cookie-Banner ausblenden
+function saveCookieConsent(consent) {
+  localStorage.setItem(
+    'cookieConsent',
+    JSON.stringify({
+      processed: true,
+      timestamp: new Date().toISOString(),
+      ...consent, // Fügt die aktuellen Zustimmungen hinzu
+    })
+  );
 
+  // Cookie-Banner ausblenden
   const cookieBanner = document.getElementById('cookieBanner');
   cookieBanner.classList.remove('visible');
-  enableScrolling(); // Scroll wieder aktivieren
-
-  // Nach der Animation Banner entfernen
   setTimeout(() => {
     cookieBanner.style.display = 'none';
   }, 500);
 
-  // Wenn Analytics akzeptiert wurde
-  if (settings.analytics) {
+  // Falls Analytics erlaubt ist
+  if (consent.analytics) {
     initGoogleAnalytics();
   }
 }
