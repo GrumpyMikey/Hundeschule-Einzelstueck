@@ -14,7 +14,7 @@ export function initCookieConsent() {
       <div class="cookie-banner__text">
         <p>Diese Website verwendet Cookies, um dir das bestmögliche Online-Erlebnis zu bieten.
         Entscheide selbst, welche Kategorien du zulassen möchtest. Weitere Informationen findest du in unserer
-        <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+        <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
       </div>
 
       <div class="cookie-banner__options">
@@ -63,6 +63,7 @@ export function initCookieConsent() {
     cookieBanner.innerHTML = bannerContent;
     setTimeout(() => {
       cookieBanner.classList.add('visible');
+      disableScrolling(); // Scroll des Bodys deaktivieren
     }, 1000);
 
     // Event Listener für "Alle akzeptieren"
@@ -97,6 +98,7 @@ function setConsent(settings) {
 
   const cookieBanner = document.getElementById('cookieBanner');
   cookieBanner.classList.remove('visible');
+  enableScrolling(); // Scroll wieder aktivieren
 
   // Nach der Animation Banner entfernen
   setTimeout(() => {
@@ -142,3 +144,21 @@ export function hasAnalyticsConsent() {
   const consent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
   return consent.analytics === true;
 }
+
+// Funktion zur Sperrung des Scrollens (für den Body im Hintergrund)
+function disableScrolling() {
+  document.body.style.overflow = 'hidden';
+}
+
+// Funktion zur Aktivierung des Scrollens
+function enableScrolling() {
+  document.body.style.overflow = '';
+}
+
+document.getElementById('changeCookieSettings')?.addEventListener('click', (e) => {
+  e.preventDefault(); // Verhindert Standard-Anchor-Verhalten
+  localStorage.removeItem('cookieConsent'); // Löscht vorherige Cookie-Zustimmung
+  const cookieBanner = document.getElementById('cookieBanner');
+  cookieBanner.style.display = 'block'; // Zeigt das Banner wieder an
+  cookieBanner.classList.add('visible'); // Setzt die sichtbare Klasse
+});

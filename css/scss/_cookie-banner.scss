@@ -9,13 +9,20 @@
   right: 0;
   background-color: white;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 90vh; // Begrenze die Höhe des Banners auf 90% des Viewports
+  overflow-y: auto; // Innerhalb des Banners scrollen, wenn der Inhalt zu groß ist
+  width: 100%; // Sicherstellen, dass es mobil 100% der Breite nutzt
   padding: $spacing-md;
   z-index: map-get($z-index, 'cookie-banner');
-  transform: translateY(100%);
-  transition: transform $transition-normal;
+  transform: translateY(100%); // Banner start ausgeblendet
+  opacity: 0; // Start ohne Sichtbarkeit
+  pointer-events: none; // Keine Interaktionen möglich, während es ausgeblendet ist
+  transition: transform 0.5s ease, opacity 0.5s ease; // Übergang für Animation
 
   &.visible {
-    transform: translateY(0);
+    transform: translateY(0); // Banner wird nach oben geschoben / Sichtbar im Viewport
+    opacity: 1; // Banner wird sichtbar / Voll transparent
+    pointer-events: auto; // Interaktion ermöglichen / Klick nutzbar
   }
 
   &__content {
@@ -32,6 +39,7 @@
   }
 
   &__text {
+    word-wrap: break-word; // Falls lange Texte oder Links existieren
     font-size: 0.9rem;
     line-height: 1.5;
     color: $color-text;
@@ -48,6 +56,7 @@
 
   &__button {
     padding: $spacing-sm $spacing-md;
+    font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -77,6 +86,8 @@
     }
 
     @media (max-width: $breakpoint-md) {
+      padding: $spacing-sm;
+      font-size: 0.9rem; // Kleinere Schrift auf mobilen Geräten
       width: 100%;
       margin-top: $spacing-sm;
     }
