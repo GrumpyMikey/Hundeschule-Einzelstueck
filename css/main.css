@@ -531,6 +531,68 @@ a:hover {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .hero__slideshow-image {
+    object-position: center;
+  }
+}
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/**********************************************************************************************************************/
+/* Quote Section */
+.quote-section {
+  padding: 8rem 0;
+  background: linear-gradient(45deg, #D4145A, rgb(142.0948275862, 13.4051724138, 60.3232758621));
+  color: white;
+}
+
+.quote {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.quote p {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin: 0;
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .quote p {
+    font-size: 1.5rem;
+  }
+}
+.quote p:first-of-type {
+  margin-bottom: 0.5rem;
+}
+.quote cite {
+  display: block;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
 /**********************************************************************************************************************/
 /* Stats Section */
 .stats {
