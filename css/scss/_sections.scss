@@ -8,59 +8,78 @@
 
 /**********************************************************************************************************************/
 /* Hero Section */
+// In _sections.scss - ersetze den kompletten .hero Block
+
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
+  background-color: $color-background;
 
-  &__video-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  &__logo-placeholder {
+  // Slideshow Container
+  &__slideshow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    z-index: 2;
-    opacity: 1;
-    transition: opacity 1.5s ease;
+    z-index: 1; // Basis z-index
 
-    &.fade-out {
+    &-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 1; // Bilder über dem Container
+
+      &.next {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      &.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      &.slide-left {
+        &.active {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+
+        &.next {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
     }
   }
 
-  &__logo {
-    width: 80vw;
-    max-width: 500px;
-    height: auto;
-    animation: pulseLogo 2s infinite ease-in-out;
-
-    @media (max-width: $breakpoint-md) {
-      width: 90vw;
-    }
-  }
-
-  &__video {
+  // Overlay für bessere Lesbarkeit
+  &::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2; // Über den Bildern, unter dem Content
   }
 
+  // Content-Bereich
   &__content {
     position: absolute;
     top: 50%;
@@ -68,19 +87,15 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    z-index: 3;
-    opacity: 0; // Start unsichtbar
-    transition: all $transition-fast;
-
-    &--visible {
-      opacity: 1;
-      animation: fadeInContent 1.2s ease forwards;
-    }
+    z-index: 3; // Über allem anderen
+    width: 90%;
+    max-width: 800px;
+    padding: $spacing-md;
 
     h1 {
       font-size: 4rem;
-      margin-bottom: $spacing-sm;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: $spacing-md;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
       @media (max-width: $breakpoint-md) {
         font-size: 2.5rem;
@@ -89,22 +104,40 @@
 
     p {
       font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto $spacing-lg;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      margin-bottom: $spacing-lg;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
       @media (max-width: $breakpoint-md) {
         font-size: 1rem;
-        padding: 0 $spacing-md;
       }
     }
-
   }
+}
 
-  &__subtitle {
-    font-size: 1.5rem;
-    margin-bottom: $spacing-lg;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+// Ende Hero
+
+// Fade-in Animation
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile Optimierung
+@media (max-width: $breakpoint-md) {
+  .hero {
+    &__slideshow {
+      &-image {
+        object-position: center; // Zentriert das Bild auf mobilen Geräten
+      }
+    }
   }
 }
 

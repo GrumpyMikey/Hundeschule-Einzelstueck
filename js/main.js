@@ -8,6 +8,7 @@ import {initSlideshow} from './modules/slideshow.js';
 import {initCookieConsent} from './modules/cookies.js';
 import initModal from './modules/modal.js';
 import {initNavigationButtons} from './modules/navigation-buttons.js';
+import {initHeroSlideshow} from './modules/slideshow-hero.js';
 
 // In main.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,5 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initModal();
     initCookieConsent();
     initNavigationButtons();
+    initHeroSlideshow();
   });
 });
