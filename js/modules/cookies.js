@@ -2,10 +2,7 @@
 
 let analyticsInitialized = false;
 
-export function initCookieConsent() {
-  const cookieBanner = document.getElementById('cookieBanner');
-
-  const bannerContent = `
+const bannerContent = `
     <div class="cookie-banner__content">
       <div class="cookie-banner__header">
         <h3>Cookie-Einstellungen</h3>
@@ -55,12 +52,16 @@ export function initCookieConsent() {
     </div>
   `;
 
+export function initCookieConsent() {
+  const cookieBanner = document.getElementById('cookieBanner');
+
   // Prüfe gespeicherte Einstellungen
   const cookieConsent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
 
   // Wenn noch keine Entscheidung getroffen wurde
   if (!cookieConsent.processed) {
     cookieBanner.innerHTML = bannerContent;
+    addCookieBannerListeners();
     setTimeout(() => {
       cookieBanner.classList.add('visible');
       disableScrolling(); // Scroll des Bodys deaktivieren
@@ -190,4 +191,61 @@ document.getElementById('changeCookieSettings')?.addEventListener('click', (e) =
   const cookieBanner = document.getElementById('cookieBanner');
   cookieBanner.style.display = 'block'; // Zeigt das Banner wieder an
   cookieBanner.classList.add('visible'); // Setzt die sichtbare Klasse
+});
+
+function showCookieBanner() {
+  const cookieBanner = document.getElementById('cookieBanner');
+  cookieBanner.innerHTML = bannerContent;
+  addCookieBannerListeners(); // Hier auch hinzufügen
+  cookieBanner.style.display = 'block';
+  setTimeout(() => {
+    cookieBanner.classList.add('visible');
+    disableScrolling();
+  }, 50);
+}
+
+// Funktion zum Hinzufügen der Event Listener
+function addCookieBannerListeners() {
+  // Event Listener für "Alle akzeptieren"
+  document.getElementById('cookieAcceptAll')?.addEventListener('click', () => {
+    saveCookieConsent({
+      essential: true,
+      analytics: true,
+    });
+  });
+
+  // Für den "Auswahl bestätigen"-Button
+  document.getElementById('cookieAcceptSelection')?.addEventListener('click', () => {
+    const analyticsConsent = document.getElementById('analyticsConsent')?.checked || false;
+    saveCookieConsent({
+      essential: true,
+      analytics: analyticsConsent,
+    });
+  });
+
+  // Für den "Alle ablehnen"-Button
+  document.getElementById('cookieRejectAll')?.addEventListener('click', () => {
+    saveCookieConsent({
+      essential: true,
+      analytics: false,
+    });
+  });
+}
+
+// Event Listener für Cookie-Einstellungen ändern
+document.addEventListener('DOMContentLoaded', () => {
+  const changeCookieSettingsButtons = document.querySelectorAll('[id="changeCookieSettings"]');
+
+  changeCookieSettingsButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('cookieConsent');
+      if (analyticsInitialized) {
+        // Google Analytics deaktivieren
+        window['ga-disable-G-EWFCEK73YX'] = true;
+        analyticsInitialized = false;
+      }
+      showCookieBanner();
+    });
+  });
 });

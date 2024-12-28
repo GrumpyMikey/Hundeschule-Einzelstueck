@@ -22,9 +22,15 @@ export function initNavigation() {
 
   // Smooth Scroll für Navigation Links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+
+      // Ignoriere Links mit leerem href="#"
+      if (href === '#') return;
+
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const target = document.querySelector(href);
+
       if (target) {
         // Schließe mobile Menü wenn aktiv
         navMenu.classList.remove('active');
