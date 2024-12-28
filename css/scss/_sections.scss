@@ -109,9 +109,15 @@
 }
 
 @keyframes pulseLogo {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /**********************************************************************************************************************/
@@ -319,9 +325,8 @@
           object-fit: cover;
           opacity: 0;
           transform: scale(1.05);
-          transition:
-            opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-            transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: opacity, transform;
 
           &.active {
@@ -407,8 +412,12 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
   }
 
@@ -449,8 +458,14 @@
 .prices {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: $spacing-lg;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -502,152 +517,97 @@
 
 /**********************************************************************************************************************/
 /* Contact Section */
+
 .contact {
-
-  background-color: white; // Hier hinzufügen
-  color: $color-text; // Hier hinzufügen
-
   &__grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__cards {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: $spacing-xl;
+    grid-template-columns: repeat(2, 1fr); // Explizit 2 Spalten statt auto-fit
+    gap: $spacing-lg; // Etwas mehr Abstand zwischen den Karten
+    max-width: 800px;
+    margin: 0 auto;
 
     @media (max-width: $breakpoint-md) {
-      grid-template-columns: 1fr;
-      gap: $spacing-lg;
+      grid-template-columns: 1fr; // Eine Spalte auf Mobile
     }
   }
 
-  &__info {
-    padding: $spacing-md;
+  &__location {
+    max-width: 400px; // Maximale Breite der Standort-Karte
+    margin: 0 auto; // Zentriert die Karte
+    padding: 0 $spacing-md; // Seitenabstand für mobile Ansicht
+  }
+}
 
-    &-item {
-      display: flex;
-      align-items: center;
+.contact-card {
+  background: white;
+  padding: $spacing-md;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__icon {
+    font-size: 2rem;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+
+    i {
+      background: rgba($color-primary, 0.1);
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+    }
+  }
+
+  h3 {
+    margin-bottom: $spacing-xs;
+    color: $color-text;
+  }
+
+  p {
+    color: $color-secondary;
+    margin-bottom: $spacing-sm;
+    font-size: 0.9rem;
+  }
+
+  &__link {
+    display: inline-block;
+    color: $color-primary;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
+    }
+  }
+
+  // Spezielle Styles für die Standort-Karte
+  &--location {
+    width: 100%; // Nutzt die volle verfügbare Breite
+
+    address {
+      font-style: normal;
       margin-bottom: $spacing-md;
-
-      i {
-        font-size: 1.5rem;
-        color: $color-primary;
-        margin-right: $spacing-sm;
-        width: 30px;
-      }
-
-      a {
-        color: $color-text;
-        text-decoration: none;
-
-        &:hover {
-          color: $color-primary;
-        }
-      }
-    }
-  }
-
-  &__social {
-    margin-top: $spacing-lg;
-
-    &-link {
-      font-size: 2rem;
-      color: $color-primary;
-      margin-right: $spacing-md;
-
-      &:hover {
-        color: color.adjust($color-primary, $lightness: -10%, $space: hsl);
-      }
-    }
-  }
-
-  &__form {
-    background-color: white;
-    padding: $spacing-lg;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.form {
-  &__group {
-    margin-bottom: $spacing-md;
-
-    label {
-      display: block;
-      margin-bottom: $spacing-xs;
-      color: $color-text;
+      line-height: 1.6;
+      color: $color-secondary;
     }
 
-    input,
-    textarea {
-      width: 100%;
-      padding: $spacing-sm;
-      border: 1px solid color.adjust($color-secondary, $lightness: 30%, $space: hsl);
-      border-radius: 5px;
-      font-family: inherit;
-
-      &:focus {
-        outline: none;
-        border-color: $color-primary;
-      }
+    .btn {
+      width: 100%; // Button nutzt volle Breite
+      max-width: 300px; // aber mit maximaler Breite
     }
-  }
-}
-
-/* Checkbox Style */
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  font-size: 0.9rem;
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .checkmark {
-    position: absolute;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 5px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 9px;
-      top: 5px;
-      width: 5px;
-      height: 10px;
-      border: solid white;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-    }
-  }
-
-  input:checked ~ .checkmark {
-    background-color: $color-primary;
-
-    &:after {
-      display: block;
-    }
-  }
-}
-
-@keyframes fadeInContent {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -40%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -696,6 +656,7 @@
   }
 }
 
+/**********************************************************************************************************************/
 /* Partners Section */
 .partners {
   &__grid {

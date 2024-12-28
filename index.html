@@ -500,51 +500,63 @@
     <div class="container">
       <h2 class="section__title fade-in">Kontakt</h2>
       <div class="contact__grid">
-        <!-- Kontaktinformationen -->
-        <div class="contact__info fade-in">
-          <div class="contact__info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+491622429770">+49 162 24 29 770</a>
+        <!-- Hauptkontakt-Karten in einem eigenen Grid -->
+        <div class="contact__cards">
+          <div class="contact-card fade-in">
+            <div class="contact-card__icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Ruf mich an</h3>
+            <p>Direkt und persönlich</p>
+            <a href="tel:+491622429770" class="contact-card__link">+49 162 24 29 770</a>
           </div>
-          <div class="contact__info-item">
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:hundeschule-einzelstueck@mail.de">hundeschule-einzelstueck@mail.de</a>
+
+          <div class="contact-card fade-in">
+            <div class="contact-card__icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Schreib mir</h3>
+            <p>Ich antworte zeitnah</p>
+            <a href="mailto:hundeschule-einzelstueck@mail.de" class="contact-card__link">hundeschule-einzelstueck@mail.de</a>
           </div>
-          <div class="contact__info-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/491622429770" target="_blank">WhatsApp</a>
+
+          <div class="contact-card fade-in">
+            <div class="contact-card__icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3>WhatsApp</h3>
+            <p>Schnell & unkompliziert</p>
+            <a href="https://wa.me/491622429770" class="contact-card__link" target="_blank">WhatsApp Chat starten</a>
           </div>
-          <div class="contact__social">
-            <a href="https://www.instagram.com/alexandra.behr10/" target="_blank" class="contact__social-link">
+
+          <div class="contact-card fade-in">
+            <div class="contact-card__icon">
               <i class="fab fa-instagram"></i>
-            </a>
+            </div>
+            <h3>Instagram</h3>
+            <p>Folge mir für Updates</p>
+            <a href="https://www.instagram.com/alexandra.behr10/" target="_blank" rel="noopener"
+               class="contact-card__link">@alexandra.behr10</a>
           </div>
         </div>
+      </div>
 
-        <!-- Kontaktformular -->
-        <form class="contact__form fade-in" id="contactForm">
-          <div class="form__group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+      <!-- Standort-Karte in separatem Container für bessere Zentrierung -->
+      <div class="contact__location fade-in">
+        <div class="contact-card contact-card--location">
+          <div class="contact-card__icon">
+            <i class="fas fa-map-marker-alt"></i>
           </div>
-          <div class="form__group">
-            <label for="email">E-Mail</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form__group">
-            <label for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <div class="form__group">
-            <label class="checkbox-container">
-              <input type="checkbox" required>
-              <span class="checkmark"></span>
-              Ich stimme der Verarbeitung meiner Daten gemäß <a href="datenschutz.html">Datenschutzerklärung</a>
-              zu
-            </label>
-          </div>
-          <button type="submit" class="btn btn--primary">Nachricht senden</button>
-        </form>
+          <h3>Standort</h3>
+          <address>
+            Hirsauer Str. 53<br>
+            71665 Vaihingen
+          </address>
+          <a href="https://maps.google.com/?q=Hirsauer+Str.+53,71665+Vaihingen" target="_blank" rel="noopener"
+             class="btn btn--secondary">
+            <i class="fas fa-directions"></i> Route planen
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -553,8 +565,8 @@
 
 <!-- ------------------------------------------------------------------------------------------------------------- -->
 <!-- Footer -->
-<!-- footer.html -->
 <footer class="footer">
+
   <div class="footer__content">
     <div class="footer__section">
       <h4>Kontakt</h4>
