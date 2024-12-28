@@ -2,6 +2,8 @@
 
 export function initPreloader() {
   const videoWrapper = document.querySelector('.hero__video-wrapper');
+  if (!videoWrapper) return; // Return, wenn nicht auf der Hauptseite!
+
   const video = document.querySelector('.hero__video');
   const headerLogo = document.querySelector('.nav__logo');
   const heroContent = document.querySelector('.hero__content');

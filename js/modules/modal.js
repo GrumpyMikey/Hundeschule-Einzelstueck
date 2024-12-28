@@ -3,6 +3,7 @@
 export default function initModal() {
   const storyButton = document.querySelector('[data-story-toggle]');
   const modal = document.querySelector('.modal');
+  if (!modal) return; // Return, wenn nicht auf Hauptseite
   const modalContent = modal.querySelector('.modal__content');
   const closeButton = modal.querySelector('.modal__close');
 

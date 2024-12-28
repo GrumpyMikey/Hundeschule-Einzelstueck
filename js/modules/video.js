@@ -3,6 +3,7 @@
 export function initVideo() {
 
   const video = document.querySelector('.hero__video');
+  if (!video) return; // Return, wenn nicht auf der Hauptseite!
   const source = video.querySelector('source');
 
   if (!video || !source) {

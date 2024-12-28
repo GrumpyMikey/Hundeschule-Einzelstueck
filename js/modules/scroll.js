@@ -2,6 +2,7 @@
 
 export function initScrollEffects() {
   const scrollTopBtn = document.querySelector('.scroll-top');
+  if (!scrollTopBtn) return; // Return, wenn nicht auf Hauptseite!
 
   // Scroll-to-Top Button Sichtbarkeit
   window.addEventListener('scroll', () => {
@@ -23,6 +24,7 @@ export function initScrollEffects() {
   // Animations beim Scrollen
   const animateOnScroll = () => {
     const elements = document.querySelectorAll('.fade-in');
+    if (!elements.length) return; // Return, wenn nicht auf Hauptseite!
 
     elements.forEach(element => {
       const elementTop = element.getBoundingClientRect().top;

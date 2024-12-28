@@ -282,3 +282,34 @@
     top: 0;
   }
 }
+
+.nav-button {
+  position: fixed;
+  right: $spacing-md;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background-color: $color-primary;
+  color: white;
+  transition: all $transition-fast;
+  z-index: map.get($z-index, 'scroll-top');
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  &--up {
+    bottom: calc(#{$spacing-md} + 50px);
+  }
+
+  &--back {
+    bottom: $spacing-md;
+  }
+}

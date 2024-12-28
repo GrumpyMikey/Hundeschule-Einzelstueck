@@ -411,6 +411,34 @@ a:hover {
   top: 0;
 }
 
+.nav-button {
+  position: fixed;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background-color: #D4145A;
+  color: white;
+  transition: all 0.3s ease;
+  z-index: 500;
+  opacity: 0.8;
+}
+.nav-button:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+.nav-button--up {
+  bottom: calc(2rem + 50px);
+}
+.nav-button--back {
+  bottom: 2rem;
+}
+
 /**********************************************************************************************************************/
 /* Hero Section */
 .hero {

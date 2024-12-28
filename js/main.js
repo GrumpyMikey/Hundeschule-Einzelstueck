@@ -1,12 +1,13 @@
 // main.js
 
-import { initNavigation } from './modules/navigation.js';
-import { initPreloader } from './modules/preloader.js';
-import { initScrollEffects } from './modules/scroll.js';
-import { initVideo } from './modules/video.js';
-import { initSlideshow } from './modules/slideshow.js';
-import { initCookieConsent } from './modules/cookies.js';
+import {initNavigation} from './modules/navigation.js';
+import {initPreloader} from './modules/preloader.js';
+import {initScrollEffects} from './modules/scroll.js';
+import {initVideo} from './modules/video.js';
+import {initSlideshow} from './modules/slideshow.js';
+import {initCookieConsent} from './modules/cookies.js';
 import initModal from './modules/modal.js';
+import {initNavigationButtons} from './modules/navigation-buttons.js';
 
 // In main.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,5 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideshow();
     initModal();
     initCookieConsent();
+    initNavigationButtons();
   });
 });
