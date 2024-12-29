@@ -118,6 +118,10 @@
 .nav__social a {
   color: white;
   transition: color 0.3s ease;
+  margin-left: 1rem;
+}
+.nav__social a:first-child {
+  margin-left: 0;
 }
 .header.scrolled .nav__social a {
   color: #D4145A;

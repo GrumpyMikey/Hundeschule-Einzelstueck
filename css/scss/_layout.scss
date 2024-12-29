@@ -140,6 +140,11 @@
     a {
       color: white;
       transition: color $transition-fast;
+      margin-left: $spacing-sm;
+
+      &:first-child {
+        margin-left: 0; // Kein Abstand beim ersten Icon
+      }
 
       .header.scrolled & {
         color: $color-primary;
