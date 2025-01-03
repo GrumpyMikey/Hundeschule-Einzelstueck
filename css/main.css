@@ -571,30 +571,91 @@ a:hover {
   color: white;
 }
 
-.quote {
-  text-align: center;
-  max-width: 800px;
+.quote-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  max-width: 1200px;
   margin: 0 auto;
-}
-.quote p {
-  font-size: 2rem;
-  line-height: 1.4;
-  margin: 0;
-  font-style: italic;
+  align-items: center;
 }
 @media (max-width: 768px) {
-  .quote p {
-    font-size: 1.5rem;
+  .quote-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
 }
-.quote p:first-of-type {
-  margin-bottom: 0.5rem;
+
+.quote-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.quote-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.quote-image img:hover {
+  transform: scale(1.05);
+}
+
+.quote {
+  text-align: left;
+  padding: 2rem;
+}
+.quote .quote-line {
+  font-family: "Tangerine", serif;
+  margin: 0;
+  line-height: 1.6;
+  transition: transform 0.5s ease;
+}
+.quote .quote-line--small {
+  font-size: 2.5rem;
+  margin-left: 0;
+}
+.quote .quote-line--small:hover {
+  transform: translateX(10px);
+}
+.quote .quote-line--medium {
+  font-size: 3.5rem;
+  margin-left: 2rem;
+  color: rgb(239.8275862069, 94.1724137931, 147.275862069);
+}
+.quote .quote-line--medium:hover {
+  transform: translateX(15px);
+}
+.quote .quote-line--large {
+  font-size: 4.2rem;
+  margin-left: 4rem;
+  color: rgb(244.224137931, 140.775862069, 178.4913793103);
+}
+.quote .quote-line--large:hover {
+  transform: translateX(20px);
 }
 .quote cite {
   display: block;
   margin-top: 2rem;
-  font-size: 1.2rem;
+  margin-left: auto;
+  font-size: 1.4rem;
   opacity: 0.8;
+  font-style: italic;
+  text-align: right;
+  width: 80%;
+}
+@media (max-width: 768px) {
+  .quote .quote-line--small {
+    font-size: 2rem;
+  }
+  .quote .quote-line--medium {
+    font-size: 2.8rem;
+    margin-left: 1rem;
+  }
+  .quote .quote-line--large {
+    font-size: 3.5rem;
+    margin-left: 2rem;
+  }
 }
 
 /**********************************************************************************************************************/
