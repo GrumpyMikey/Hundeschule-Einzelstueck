@@ -38,8 +38,14 @@
   position: relative;
   width: 150px;
   margin: 1rem;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.3s ease;
+  /*
+    &--transform {
+      opacity: 1;
+      animation: shrinkLogo 0.8s ease forwards;
+    }
+   */
 }
 .nav__logo img {
   width: 100%;
@@ -48,10 +54,6 @@
 }
 .header.scrolled .nav__logo img {
   transform: scale(0.75);
-}
-.nav__logo--transform {
-  opacity: 1;
-  animation: shrinkLogo 0.8s ease forwards;
 }
 @media (max-width: 768px) {
   .nav__logo {

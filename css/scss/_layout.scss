@@ -51,7 +51,7 @@
     position: relative;
     width: 150px;
     margin: $spacing-sm;
-    opacity: 0;
+    opacity: 1; // Temporaer aktiviert, falls wieder per scrollen eingeblendet werden soll
     transition: all $transition-fast;
 
     img {
@@ -64,10 +64,13 @@
       }
     }
 
-    &--transform {
-      opacity: 1;
-      animation: shrinkLogo 0.8s ease forwards;
-    }
+    // Temporaer deaktiviert, falls wieder per scrollen eingeblendet werden soll
+    /*
+      &--transform {
+        opacity: 1;
+        animation: shrinkLogo 0.8s ease forwards;
+      }
+     */
 
     @media (max-width: $breakpoint-md) {
       width: 120px; // Kleiner auf mobilen Geräten
