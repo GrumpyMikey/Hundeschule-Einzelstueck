@@ -163,31 +163,105 @@
   color: white;
 }
 
-.quote {
-  text-align: center;
-  max-width: 800px;
+.quote-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xl;
+  max-width: 1200px;
   margin: 0 auto;
+  align-items: center;
 
-  p {
-    font-size: 2rem;
-    line-height: 1.4;
-    margin: 0;
-    font-style: italic;
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
 
-    @media (max-width: $breakpoint-md) {
-      font-size: 1.5rem;
+.quote-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform $transition-normal;
+
+    &:hover {
+      transform: scale(1.05);
     }
+  }
+}
 
-    &:first-of-type {
-      margin-bottom: $spacing-xs;
+.quote {
+  text-align: left;
+  padding: $spacing-md;
+
+  .quote-line {
+    font-family: 'Tangerine', serif;
+    margin: 0;
+    line-height: 1.6;
+    transition: transform $transition-normal;
+    
+    &--small {
+      font-size: 2.5rem;
+      margin-left: 0;
+      
+      &:hover {
+        transform: translateX(10px);
+      }
+    }
+    
+    &--medium {
+      font-size: 3.5rem;
+      margin-left: $spacing-md;
+      color: lighten($color-primary, 20%);
+      
+      &:hover {
+        transform: translateX(15px);
+      }
+    }
+    
+    &--large {
+      font-size: 4.2rem;
+      margin-left: $spacing-lg;
+      color: lighten($color-primary, 30%);
+      
+      &:hover {
+        transform: translateX(20px);
+      }
     }
   }
 
   cite {
     display: block;
     margin-top: $spacing-md;
-    font-size: 1.2rem;
+    margin-left: auto;
+    font-size: 1.4rem;
     opacity: 0.8;
+    font-style: italic;
+    text-align: right;
+    width: 80%;
+  }
+
+  // Responsive Anpassungen
+  @media (max-width: $breakpoint-md) {
+    .quote-line {
+      &--small {
+        font-size: 2rem;
+      }
+      
+      &--medium {
+        font-size: 2.8rem;
+        margin-left: $spacing-sm;
+      }
+      
+      &--large {
+        font-size: 3.5rem;
+        margin-left: $spacing-md;
+      }
+    }
   }
 }
 
