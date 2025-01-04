@@ -4,4 +4,4 @@ Disallow: /assets/
 Disallow: /css/
 Disallow: /js/
 
-Sitemap: https://www.hundeschule-einzelstück.de/sitemap.xml
+Sitemap: https://www.hundeschule-einzelstueck.de/sitemap.xml
