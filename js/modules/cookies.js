@@ -147,7 +147,7 @@ function initGoogleAnalytics() {
   // Google Analytics 4 Tracking Code
   const gtagScript = document.createElement('script');
   gtagScript.async = true;
-  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EWFCEK73YX'; // Tracking-ID
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SJK76G68NF'; // Tracking-ID
   document.head.appendChild(gtagScript);
 
   window.dataLayer = window.dataLayer || [];
@@ -159,7 +159,7 @@ function initGoogleAnalytics() {
   gtag('js', new Date());
 
   // Konfiguration mit IP-Anonymisierung und zusätzlichen Datenschutzeinstellungen
-  gtag('config', 'G-EWFCEK73YX', { // Tracking-ID
+  gtag('config', 'G-SJK76G68NF', { // Tracking-ID
     'anonymize_ip': true,
     'allow_ad_personalization_signals': false,
     'restricted_data_processing': true
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.removeItem('cookieConsent');
       if (analyticsInitialized) {
         // Google Analytics deaktivieren
-        window['ga-disable-G-EWFCEK73YX'] = true;
+        window['ga-disable-G-SJK76G68NF'] = true;
         analyticsInitialized = false;
       }
       showCookieBanner();
