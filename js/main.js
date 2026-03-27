@@ -1,5 +1,7 @@
 // main.js
 
+import '../css/scss/main.scss';
+
 import {initNavigation} from './modules/navigation.js';
 import {initPreloader} from './modules/preloader.js';
 import {initScrollEffects} from './modules/scroll.js';

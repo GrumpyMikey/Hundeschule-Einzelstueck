@@ -11,15 +11,23 @@ module.exports = merge(common, {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'img', to: 'img' },
-        { from: 'css', to: 'css' },
-        { from: 'js/vendor', to: 'js/vendor' },
-        { from: 'icon.svg', to: 'icon.svg' },
-        { from: 'favicon.ico', to: 'favicon.ico' },
-        { from: 'robots.txt', to: 'robots.txt' },
-        { from: 'icon.png', to: 'icon.png' },
-        { from: '404.html', to: '404.html' },
-        { from: 'site.webmanifest', to: 'site.webmanifest' },
+        {
+          from: 'assets',
+          to: 'assets',
+          globOptions: {
+            ignore: ['**/.DS_Store'],
+          },
+        },
+        {
+          from: '*.html', to: '[name].html',
+          filter: (resourcePath) => !resourcePath.endsWith('index.html')
+        },
+        { from: 'js/vendor', to: 'js/vendor', noErrorOnMissing: true },
+        { from: 'CNAME', noErrorOnMissing: true },
+        { from: 'robots.txt', noErrorOnMissing: true },
+        { from: 'sitemap.xml', noErrorOnMissing: true },
+        { from: 'send-mail.php', noErrorOnMissing: true },
+        { from: 'site.webmanifest', noErrorOnMissing: true },
       ],
     }),
   ],

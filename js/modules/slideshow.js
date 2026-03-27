@@ -3,6 +3,12 @@
 export function initSlideshow() {
   const slideshowContainer = document.querySelector('.slideshow');
   if (!slideshowContainer) return;
+  const images = [
+    'assets/images/slideshow-dogs/dogs-1.jpeg',
+    'assets/images/slideshow-dogs/dogs-2.jpeg',
+    'assets/images/slideshow-dogs/dogs-3.jpeg',
+    'assets/images/slideshow-dogs/dogs-4.jpeg',
+  ];
 
   // Erstelle Wrapper für Slideshow-Komponenten
   const createSlideshowStructure = () => {
@@ -30,23 +36,6 @@ export function initSlideshow() {
     const prevButton = slideshowContainer.querySelector('.prev');
     const nextButton = slideshowContainer.querySelector('.next');
 
-    let images = [];
-    let currentIndex = 0;
-    let slideInterval;
-
-    // Prüfe verfügbare Bilder - Angepasster Pfad für den Unterordner
-    try {
-      let imageCount = 1;
-      while (true) {
-        const response = await fetch(`assets/images/slideshow-dogs/dogs-${imageCount}.jpeg`);
-        if (!response.ok) break;
-        images.push(`dogs-${imageCount}.jpeg`);
-        imageCount++;
-      }
-    } catch (error) {
-      console.error('Fehler beim Laden der Bilder:', error);
-    }
-
     // Zeige Fehler, wenn keine Bilder gefunden
     if (images.length === 0) {
       loader.style.display = 'none';
@@ -55,10 +44,12 @@ export function initSlideshow() {
     }
 
     // Erstelle Image-Tags und Navigationspunkte
-    images.forEach((image, index) => {
-      // Erstelle Bild - Angepasster Pfad für den Unterordner
+    images.forEach((imagePath, index) => {
       const img = document.createElement('img');
-      img.src = `assets/images/slideshow-dogs/${image}`;
+
+      // NUR imagePath zuweisen, da Webpack den Pfad schon fix und fertig liefert!
+      img.src = imagePath;
+
       img.alt = `Meine Hunde ${index + 1}`;
       img.classList.toggle('active', index === 0);
       imagesContainer.appendChild(img);
