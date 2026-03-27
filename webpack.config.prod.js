@@ -26,7 +26,6 @@ module.exports = merge(common, {
         { from: 'CNAME', noErrorOnMissing: true },
         { from: 'robots.txt', noErrorOnMissing: true },
         { from: 'sitemap.xml', noErrorOnMissing: true },
-        { from: 'send-mail.php', noErrorOnMissing: true },
         { from: 'site.webmanifest', noErrorOnMissing: true },
       ],
     }),

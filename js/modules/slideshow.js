@@ -3,6 +3,7 @@
 export function initSlideshow() {
   const slideshowContainer = document.querySelector('.slideshow');
   if (!slideshowContainer) return;
+
   const images = [
     'assets/images/slideshow-dogs/dogs-1.jpeg',
     'assets/images/slideshow-dogs/dogs-2.jpeg',
@@ -35,26 +36,22 @@ export function initSlideshow() {
     const errorElement = slideshowContainer.querySelector('.slideshow__error');
     const prevButton = slideshowContainer.querySelector('.prev');
     const nextButton = slideshowContainer.querySelector('.next');
+    let currentIndex = 0;
+    let slideInterval;
 
-    // Zeige Fehler, wenn keine Bilder gefunden
     if (images.length === 0) {
       loader.style.display = 'none';
       errorElement.style.display = 'block';
       return;
     }
 
-    // Erstelle Image-Tags und Navigationspunkte
     images.forEach((imagePath, index) => {
       const img = document.createElement('img');
-
-      // NUR imagePath zuweisen, da Webpack den Pfad schon fix und fertig liefert!
       img.src = imagePath;
-
       img.alt = `Meine Hunde ${index + 1}`;
       img.classList.toggle('active', index === 0);
       imagesContainer.appendChild(img);
 
-      // Erstelle Navigationspunkt
       const dot = document.createElement('button');
       dot.classList.add('slideshow__dot');
       dot.classList.toggle('active', index === 0);
@@ -63,33 +60,27 @@ export function initSlideshow() {
       dotsContainer.appendChild(dot);
     });
 
-    // Navigation Funktionen
     const updateSlide = (newIndex) => {
       const allImages = imagesContainer.querySelectorAll('img');
       const allDots = dotsContainer.querySelectorAll('.slideshow__dot');
 
-      // Entferne alle prev-active Klassen
       allImages.forEach(img => img.classList.remove('prev-active'));
-
-      // Setze das aktuelle Bild als prev-active
       allImages[currentIndex].classList.add('prev-active');
       allImages[currentIndex].classList.remove('active');
       allDots[currentIndex].classList.remove('active');
 
       currentIndex = newIndex;
 
-      // Aktiviere das neue Bild
       allImages[currentIndex].classList.add('active');
       allDots[currentIndex].classList.add('active');
 
-      // Entferne prev-active nach der Übergangszeit
       setTimeout(() => {
         allImages.forEach((img, idx) => {
           if (idx !== currentIndex) {
             img.classList.remove('prev-active');
           }
         });
-      }, 2000); // Entspricht der Übergangszeit
+      }, 2000);
     };
 
     const nextSlide = () => {
@@ -112,7 +103,6 @@ export function initSlideshow() {
       slideInterval = setInterval(nextSlide, 3000);
     };
 
-    // Event Listener
     prevButton.addEventListener('click', () => {
       prevSlide();
       resetInterval();
@@ -123,7 +113,6 @@ export function initSlideshow() {
       resetInterval();
     });
 
-    // Touch/Swipe Support
     let touchStartX = 0;
     slideshowContainer.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
@@ -133,7 +122,7 @@ export function initSlideshow() {
       const touchEndX = e.changedTouches[0].clientX;
       const diff = touchStartX - touchEndX;
 
-      if (Math.abs(diff) > 50) { // Mindestens 50px swipe
+      if (Math.abs(diff) > 50) {
         if (diff > 0) {
           nextSlide();
         } else {
@@ -143,7 +132,6 @@ export function initSlideshow() {
       }
     });
 
-    // Starte Slideshow
     loader.style.display = 'none';
     imagesContainer.style.display = 'block';
     resetInterval();
